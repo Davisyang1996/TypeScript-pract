@@ -15,3 +15,5 @@ do {
   cupsAdded++
   console.log(cupsAdded)
 } while (cupsAdded < cupsOfSugarNeeded) 
+
+  //run with node "while-loop.js"
