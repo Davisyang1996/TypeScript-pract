@@ -1,6 +1,6 @@
 "use strict";
 // Under the hood, TypeScript processes these kinds of enum types using numbers. Enum values are assigned a numerical value according to their listed order. The first value is assigned a number of 0, the second a number of 1, and onwards
-// Enam values can be assigned number values, but this doesn't change
+// Enum values can be reassigned to a different number, but this doesn't change the order of the enum values. The order is still determined by the order in which they are declared.
 // Unsafe type declarations
 let petOnSale = "chinchilla";
 let ordersArray = [
@@ -37,3 +37,28 @@ var DirectionString;
     DirectionString["East"] = "EAST";
     DirectionString["West"] = "WEST";
 })(DirectionString || (DirectionString = {}));
+let whichWayToAntarctica;
+//whichWayToAntarctica = '\ (•◡•) / Arbitrary String \ (•◡•) /'; // Type error!
+//whichWayToAntarctica = 'SOUTH'; // STILL a type error!
+whichWayToAntarctica = DirectionString.South; // The only allowable way to do this.
+// Object types
+function sayHappyBirthdayWithObject(personObject) {
+    let output = "";
+    output += "Happy Birthday " + personObject.name + "! ";
+    output += "You are now " + personObject.age + " years old! ";
+    output +=
+        "Your birthday wish was to receive " +
+            personObject.giftWish +
+            ". And guess what? You will ";
+    if (!personObject.success) {
+        output += "not ";
+    }
+    output += "receive it! \n";
+    console.log(output);
+}
+let birthdayBabies = [
+    { name: "Liam", age: 0, giftWish: "karate skills", success: false },
+    { name: "Olivia", age: 0, giftWish: "a bright future", success: true },
+    { name: "Ava", age: 0, giftWish: "$0.25", success: true },
+];
+birthdayBabies.forEach(sayHappyBirthdayWithObject);
